@@ -59,12 +59,6 @@ dotnet run
 - This project is a prototype and was developed under time constraints for an exam.
 - Some features may be simplified or stubbed for demonstration purposes.
 
----
-
-**Created for Programming in C# exam, January 2026.**
-
----
-
 ## Full Assignment Description
 
 Conservatory with 25 practice rooms of different configurations. 15 small rooms for solo practice, 6 medium for small ensembles, 4 large for full bands or recital prep. Some have grand pianos, some uprights, some are soundproofed for drums and brass. 
