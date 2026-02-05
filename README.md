@@ -62,3 +62,15 @@ dotnet run
 ---
 
 **Created for Programming in C# exam, January 2026.**
+
+---
+
+## Full Assignment Description
+
+Conservatory with 25 practice rooms of different configurations. 15 small rooms for solo practice, 6 medium for small ensembles, 4 large for full bands or recital prep. Some have grand pianos, some uprights, some are soundproofed for drums and brass. 
+
+Students have weekly hour quotas based on their program. Performance majors get 20 hours, education majors get 10, minors get 5. Track usage and block booking when quota is exhausted. Some students try gaming the system - booking then not showing. Track no-shows and penalize with reduced quota.
+
+Equipment matters. A pianist needs a room with piano - obviously. But specifically a grand piano for recital prep, not an upright. A drum student needs soundproofing or the entire building hates them. Match room features to instrument requirements in the booking flow. 
+
+Block booking for recital prep in the final 2 weeks before juries. Students can reserve 3-hour blocks instead of the usual 2-hour maximum. But these blocks need approval from their instructor. Track practice hours toward graduation requirements - some programs mandate 200 logged hours.
