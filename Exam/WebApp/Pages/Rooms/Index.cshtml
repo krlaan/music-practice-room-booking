@@ -1,0 +1,94 @@
+@page
+@model WebApp.Pages.Rooms.IndexModel
+
+@{
+    ViewData["Title"] = "Practice Rooms";
+}
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h1 class="text-center mb-4 text-primary fw-bold">Practice Rooms</h1>
+        <form method="get" class="mb-3">
+            <div class="row justify-content-center align-items-end g-2">
+                <div class="col-md-4">
+                    <label for="searchNumber" class="form-label">Room Number</label>
+                    <input type="text" id="searchNumber" name="SearchNumber" value="@Model.SearchNumber" class="form-control" placeholder="Enter room number..." />
+                </div>
+                <div class="col-md-3">
+                    <label for="searchSize" class="form-label">Size</label>
+                    <select id="searchSize" name="SearchSize" class="form-select">
+                        <option value="">All</option>
+                        @foreach (var size in Enum.GetValues(typeof(BLL.ERoomSize)))
+                        {
+                            if (Model.SearchSize == size.ToString())
+                            {
+                                <option value="@size" selected>@size</option>
+                            }
+                            else
+                            {
+                                <option value="@size">@size</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                </div>
+                <div class="col-md-2">
+                    <a asp-page="Create" class="btn btn-success w-100">Add New Room</a>
+                </div>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover rounded shadow-sm text-center">
+                <thead>
+                <tr>
+                    <th class="text-center">
+                        Room Number
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Room[0].Size)
+                    </th>
+                    <th class="text-center">
+                        Grand Piano
+                    </th>
+                    <th class="text-center">
+                        Upright Piano
+                    </th>
+                    <th class="text-center">
+                        Sound-proofed
+                    </th>
+                    <th class="text-center"></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Room)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.RoomNumber)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Size)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.HasGrandPiano)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.HasUprightPiano)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.IsSoundproofed)
+                        </td>
+                        <td class="text-center">
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

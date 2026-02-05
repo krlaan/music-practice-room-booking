@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Music Practice Room Booking";
+}
+
+<div class="container text-center mt-5">
+    <h1 class="display-4 mb-4">Music Practice Room Booking</h1>
+    <p class="lead mb-5">Conservatory Practice Room Management System</p>
+    
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Bookings</h5>
+                    <p class="card-text">Manage practice room reservations</p>
+                    <a href="/Bookings" class="btn btn-primary">View Bookings</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Students</h5>
+                    <p class="card-text">Manage users</p>
+                    <a href="/People" class="btn btn-primary">View Students</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Practice Rooms</h5>
+                    <p class="card-text">Manage room configurations</p>
+                    <a href="/Rooms" class="btn btn-primary">View Rooms</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+@page
+@model WebApp.Pages.Bookings.DetailsModel
+
+@{
+    ViewData["Title"] = "Booking Details";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center mb-4">Booking Details</h1>
+            <div class="card">
+                <div class="card-body">
+                    <dl class="row justify-content-center text-center">
+                        <dt class="col-4">Start Time</dt>
+                        <dd class="col-6">@Html.DisplayFor(model => model.Booking.StartTime)</dd>
+                        <dt class="col-4">End Time</dt>
+                        <dd class="col-6">@Html.DisplayFor(model => model.Booking.EndTime)</dd>
+                        <dt class="col-4">@Html.DisplayNameFor(model => model.Booking.Status)</dt>
+                        <dd class="col-6">@Html.DisplayFor(model => model.Booking.Status)</dd>
+                        <dt class="col-4">@Html.DisplayNameFor(model => model.Booking.Student)</dt>
+                        <dd class="col-6">@Html.DisplayFor(model => model.Booking.Student.FullName)</dd>
+                        <dt class="col-4">@Html.DisplayNameFor(model => model.Booking.Room)</dt>
+                        <dd class="col-6">@Html.DisplayFor(model => model.Booking.Room.RoomNumber)</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a asp-page="./Edit" asp-route-id="@Model.Booking.Id" class="btn btn-primary">Edit</a>
+                <a asp-page="./Index" class="btn btn-secondary ml-2">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

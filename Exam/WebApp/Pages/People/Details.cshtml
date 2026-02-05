@@ -1,0 +1,28 @@
+@page
+@model WebApp.Pages.People.DetailsModel
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center mb-4">Student Details</h1>
+            <div class="card">
+                <div class="card-body">
+                    <dl class="row justify-content-center text-center">
+                        <dt class="col-4">Full Name</dt>
+                        <dd class="col-6">@Html.DisplayFor(model => model.Person.FullName)</dd>
+                        <dt class="col-4">Program</dt>
+                        <dd class="col-6">@Html.DisplayFor(model => model.Person.ProgramType)</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a asp-page="./Edit" asp-route-id="@Model.Person.Id" class="btn btn-primary">Edit</a>
+                <a asp-page="./Index" class="btn btn-secondary ml-2">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

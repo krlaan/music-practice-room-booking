@@ -1,0 +1,112 @@
+@page
+@model WebApp.Pages.Bookings.IndexModel
+
+@{
+    ViewData["Title"] = "Practice Room Bookings";
+}
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h1 class="text-center mb-4 text-primary fw-bold">Practice Room Bookings</h1>
+        <form method="get" class="mb-3">
+            <div class="row justify-content-center align-items-end g-2">
+                <div class="col-md-3">
+                    <label for="searchStudent" class="form-label">Student Name</label>
+                    <input type="text" id="searchStudent" name="SearchStudent" value="@Model.SearchStudent" class="form-control" placeholder="Enter student name..." />
+                </div>
+                <div class="col-md-3">
+                    <label for="searchRoom" class="form-label">Room Number</label>
+                    <input type="text" id="searchRoom" name="SearchRoom" value="@Model.SearchRoom" class="form-control" placeholder="Enter room number..." />
+                </div>
+                <div class="col-md-3">
+                    <label for="searchStatus" class="form-label">Status</label>
+                    <select id="searchStatus" name="SearchStatus" class="form-select">
+                        <option value="">All</option>
+                        @foreach (var status in Enum.GetValues(typeof(BLL.EBookingStatus)))
+                        {
+                            if (Model.SearchStatus == status.ToString())
+                            {
+                                <option value="@status" selected>@status</option>
+                            }
+                            else
+                            {
+                                <option value="@status">@status</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                </div>
+                <div class="col-md-2">
+                    <a asp-page="Create" class="btn btn-success w-100">Book New Room</a>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-2">
+                <div class="col-md-3">
+                    <a asp-page="/PendingApprovals" class="btn btn-warning w-100">Pending Approvals</a>
+                </div>
+                <div class="col-md-3">
+                    <a asp-page="/NoShowManagement" class="btn btn-danger w-100">No-Show Management</a>
+                </div>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover rounded shadow-sm text-center">
+                <thead>
+                <tr>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Booking[0].Student)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Booking[0].Room)
+                    </th>
+                    <th class="text-center">
+                        Start Time
+                    </th>
+                    <th class="text-center">
+                        End Time
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Booking[0].Status)
+                    </th>
+                    <th class="text-center"></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Booking)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Student.FullName)
+                        </td>
+                        <td class="text-center">
+                            @{
+                                var features = new List<string> { item.Room.RoomNumber, item.Room.Size.ToString() };
+                                if (item.Room.HasGrandPiano) features.Add("Grand Piano");
+                                if (item.Room.HasUprightPiano) features.Add("Upright Piano");
+                                if (item.Room.IsSoundproofed) features.Add("Soundproofed");
+                                <span>@string.Join(" | ", features)</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.StartTime)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.EndTime)
+                        </td>
+                        <td class="text-center">
+                            @(item.Status == BLL.EBookingStatus.PendingApproval ? "Pending" : item.Status.ToString())
+                        </td>
+                        <td class="text-center">
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

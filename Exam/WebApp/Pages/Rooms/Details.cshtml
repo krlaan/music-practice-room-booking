@@ -1,0 +1,34 @@
+@page
+@model WebApp.Pages.Rooms.DetailsModel
+
+@{
+    ViewData["Title"] = "Room Details";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center mb-4">Practice Room Details</h1>
+            <div class="card">
+                <div class="card-body">
+    <dl class="row justify-content-center text-center">
+        <dt class="col-4">@Html.DisplayNameFor(model => model.Room.RoomNumber)</dt>
+        <dd class="col-6">@Html.DisplayFor(model => model.Room.RoomNumber)</dd>
+        <dt class="col-4">@Html.DisplayNameFor(model => model.Room.Size)</dt>
+        <dd class="col-6">@Html.DisplayFor(model => model.Room.Size)</dd>
+        <dt class="col-4">@Html.DisplayNameFor(model => model.Room.HasGrandPiano)</dt>
+        <dd class="col-6">@Html.DisplayFor(model => model.Room.HasGrandPiano)</dd>
+        <dt class="col-4">@Html.DisplayNameFor(model => model.Room.HasUprightPiano)</dt>
+        <dd class="col-6">@Html.DisplayFor(model => model.Room.HasUprightPiano)</dd>
+        <dt class="col-4">@Html.DisplayNameFor(model => model.Room.IsSoundproofed)</dt>
+        <dd class="col-6">@Html.DisplayFor(model => model.Room.IsSoundproofed)</dd>
+    </dl>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a asp-page="./Edit" asp-route-id="@Model.Room.Id" class="btn btn-primary">Edit</a>
+                <a asp-page="./Index" class="btn btn-secondary ml-2">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

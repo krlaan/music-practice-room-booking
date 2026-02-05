@@ -1,0 +1,51 @@
+@page
+@model WebApp.Pages.Bookings.EditModel
+
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h1 class="text-center mb-4">Edit Booking</h1>
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Booking.StudentId" class="control-label">Student</label>
+                            <select asp-for="Booking.StudentId" class="form-control"
+                                    asp-items="ViewBag.StudentId"></select>
+                            <span asp-validation-for="Booking.StudentId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Booking.RoomId" class="control-label">Room</label>
+                            <select asp-for="Booking.RoomId" class="form-control" asp-items="ViewBag.RoomId"></select>
+                            <span asp-validation-for="Booking.RoomId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Booking.StartTime" class="control-label">Start Time</label>
+                            <input asp-for="Booking.StartTime" class="form-control" type="datetime-local" step="3600"/>
+                            <span asp-validation-for="Booking.StartTime" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Booking.EndTime" class="control-label">End Time</label>
+                            <input asp-for="Booking.EndTime" class="form-control" type="datetime-local" step="3600"/>
+                            <span asp-validation-for="Booking.EndTime" class="text-danger"></span>
+                        </div>
+                        <input type="hidden" asp-for="Booking.Id"/>
+                        <div class="form-group mt-4 text-center">
+                            <input type="submit" value="Save Changes" class="btn btn-primary"/>
+                            <a asp-page="./Index" class="btn btn-secondary ml-2">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

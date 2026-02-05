@@ -1,0 +1,67 @@
+@page
+@model WebApp.Pages.Rooms.EditModel
+
+@{
+    ViewData["Title"] = "Edit Room";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h1 class="text-center mb-4">Edit Practice Room</h1>
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+
+                            <label asp-for="Room.RoomNumber" class="control-label">Room Number</label>
+                            <input asp-for="Room.RoomNumber" class="form-control"/>
+                            <span asp-validation-for="Room.RoomNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+
+                            <label asp-for="Room.Size" class="control-label"></label>
+                            <select asp-for="Room.Size" class="form-control">
+                                <option value="Small">Small</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Large">Large</option>
+                            </select>
+                            <span asp-validation-for="Room.Size" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-check">
+
+                            <label class="form-check-label">
+                                <input class="form-check-input"
+                                       asp-for="Room.HasGrandPiano"/> Grand Piano
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+
+                            <label class="form-check-label">
+                                <input class="form-check-input"
+                                       asp-for="Room.HasUprightPiano"/> Upright Piano
+                            </label>
+                        </div>
+                        <div class="form-group form-check">
+
+                            <label class="form-check-label">
+                                <input class="form-check-input"
+                                       asp-for="Room.IsSoundproofed"/> Sound-proofed
+                            </label>
+                        </div>
+                        <input type="hidden" asp-for="Room.Id"/>
+                        <div class="form-group mt-4 text-center">
+                            <input type="submit" value="Save Changes" class="btn btn-primary"/>
+                            <a asp-page="./Index" class="btn btn-secondary ml-2">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
